@@ -3,21 +3,24 @@ import pyDH
 
 #PRIMERA PARTE
 primo = 57
-g = generator(primo)
+primo6digits = 131071
+primo10digits = 2147483647
+primo14digits = 67280421310721
+g = generator(primo6digits)
 
 #CLAVE PUBLICA
-A = partition(g,primo) # envia
-B = partition(g,primo) # envia
+A = partition(g,primo6digits) # envia
+B = partition(g,primo6digits) # envia
 
 
-print(A[1])
-print(B[1])
+#print(A[1])
+#print(B[1])
 
-Ad = calculate(B[1],A[0])
-Bd = calculate(A[1],B[0])
+Ad = calculate(B[1],A[0],primo6digits)
+Bd = calculate(A[1],B[0],primo6digits)
 
-print('Clave: ',Ad)
-print('Clave: ',Bd)
+
+print('Clave: ',Ad==Bd)
 
 #Segunda parte
 
