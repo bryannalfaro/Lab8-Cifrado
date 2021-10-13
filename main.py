@@ -37,10 +37,10 @@ print('Clave compartida: ', sharedkey)
 
 
 # sha256
-plain_text = str(sharedkey)
-text =  plain_text.encode('utf-8')
-hash_sha256 = hashlib.sha256(text).digest()
-print("Binario:\t", hash_sha256)
+sharedkey = str(sharedkey)
+plainText =  sharedkey.encode('utf-8')
+hashKey = hashlib.sha256(plainText).digest()
+print("Binario:\t", hashKey)
 
 option = ''
 while (option != 'salir'):
@@ -49,11 +49,11 @@ while (option != 'salir'):
     if option == 'enviar':
         message = input('Ingrese el mensaje a cifrar: ')
         print("Mensaje original: ", message)
-        cipher_text = EncryptCBC(message.encode('utf-8'), hash_sha256)
+        cipher_text = EncryptCBC(message.encode('utf-8'), hashKey)
         print("Mensaje cifrado: ", cipher_text)
 
     if option == 'recibir':
         mensaje_a_descifrar = input('Ingrese el mensaje a descifrar: ')
 
-        recovered_message = DecryptCBC(mensaje_a_descifrar, hash_sha256)
+        recovered_message = DecryptCBC(mensaje_a_descifrar, hashKey)
         print("Mensaje recuperado: ", recovered_message)
