@@ -7,22 +7,23 @@ import base64
 #PRIMERA PARTE
 primo = 57
 primo6digits = 131071
-primo10digits = 2147483647
+primo10digits = 1190494759
 primo14digits = 67280421310721
-g = generator(primo6digits)
+g = generator(primo10digits)
 
 #CLAVE PUBLICA
-A = partition(g,primo6digits) # envia
-B = partition(g,primo6digits) # envia
-
+A = partition(g,primo14digits) # envia
+B = partition(g,primo14digits) # envia
 
 #print(A[1])
 #print(B[1])
 
-Ad = calculate(B[1],A[0],primo6digits)
-Bd = calculate(A[1],B[0],primo6digits)
+Ad = calculate(B[1],A[0],primo14digits)
+Bd = calculate(A[1],B[0],primo14digits)
 
-print('Clave: ',Ad==Bd)
+print('Clave A: ',Ad)
+print('Clave B: ',Bd)
+print('Igualdad: ',Ad==Bd)
 
 #Segunda parte
 
@@ -57,3 +58,4 @@ while (option != 'salir'):
 
         recovered_message = DecryptCBC(mensaje_a_descifrar, hashKey)
         print("Mensaje recuperado: ", recovered_message)
+
