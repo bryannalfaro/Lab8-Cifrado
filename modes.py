@@ -12,8 +12,6 @@ def EncryptCBC(data, key):
     return result
 
 def DecryptCBC(result, key):
-    print(b64decode(result)[:AES.block_size])
-    print(b64decode(result)[AES.block_size:])
     cipher = AES.new(key, AES.MODE_CBC, b64decode(result)[:AES.block_size])
     pt = unpad(cipher.decrypt(b64decode(result)[AES.block_size:]), AES.block_size)
     return pt

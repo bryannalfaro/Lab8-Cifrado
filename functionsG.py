@@ -1,5 +1,6 @@
 from random import randrange
 import numpy as np
+
 def generator(primo):
     g = randrange(2,primo-1)
     return g
